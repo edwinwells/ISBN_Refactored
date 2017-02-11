@@ -5,11 +5,11 @@ def remove_unwanted(isbn_string)
 	clay = isbn_string.split("")
 	refreshed=[]
 
-	clay.each do |filter|
-		if  filter == "0" || filter == "1" || filter == "2" || filter == "3" || filter == "4" || filter == "5" || filter == "6" || filter == "7" || filter == "8" || filter == "9" || filter =="X" || filter =="x"
-			refreshed.push(filter)
-		end
-	end
+	# clay.each do |filter|
+	# 	if  filter == "0" || filter == "1" || filter == "2" || filter == "3" || filter == "4" || filter == "5" || filter == "6" || filter == "7" || filter == "8" || filter == "9" || filter =="X" || filter =="x"
+	# 		refreshed.push(filter)
+	# 	end
+	# end
 	check_count(refreshed)
 end
 
@@ -64,6 +64,7 @@ refreshed[9]=refreshed[9].to_i
 		true
 	 elsif user_given_check_number=="X" && semifinal==10
 		puts "\nCongratulations!\nYour ISBN #{refreshed[0..8].join("")}X is Valid!\nHave a nice day:-)\n"
+		true
 	else
 		puts "\nSorry 'bout your luck!\nYou got hold of a counterfeit ISBN!\nBetter luck next time...\n\n"
 		false
