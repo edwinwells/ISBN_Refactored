@@ -1,14 +1,17 @@
 def remove_unwanted(isbn_string)
 # Step 1: This will create a new array, named 'refreshed', to be manipulated throughout the program:
 ## Step 2: then it will call function "check_count", ensuring there are only 10 characters present:
-	
+	puts "Original number is:  #{isbn_string}\n"	
 	refreshed=isbn_string.split("")
+
+	puts "refreshed is:  #{refreshed}\n"	
 
 	check_count(refreshed)
 end
 
 def check_count(refreshed)
 	if refreshed.length==10
+		puts "Heading to check_x(refreshed)!"
 		check_x(refreshed)
 	else
 		check_the_sum_other_than_ten_chars(refreshed)
@@ -22,15 +25,16 @@ def check_x(refreshed)
 			return false
 		end
 	end
-	return true
+	true
+	puts "Heading to check_the_sum(refreshed)!"
 	check_the_sum(refreshed)
 end
 
 
 def check_the_sum(refreshed)
 # First, identify the user-given check-number:
-user_given_check_number=refreshed[9]
-
+user_given_check_number=refreshed[9].to_i
+puts user_given_check_number
 	sum=0
 	x=1
 	for n in (0..8) do
@@ -42,12 +46,11 @@ user_given_check_number=refreshed[9]
 
 # semifinal is the check-number:
 semifinal=sum%11
-
+puts semifinal
 # Now, verify that the calculated check-number is valid:
 
-refreshed[9]=refreshed[9].to_i
-	if  refreshed[9]==semifinal
-		return true
+	if  user_given_check_number==semifinal
+		# return true
 		valid_number(refreshed)
 	elsif user_given_check_number=="x" && semifinal==10
 		return true
@@ -63,6 +66,7 @@ end
 
 
 def invalid_number(refreshed)
+		puts "I'm in valid_number!!!"
 		puts "\nSorry 'bout your luck!\nYou got hold of a counterfeit ISBN!\nBetter luck next time...\n\n"
 end
 
