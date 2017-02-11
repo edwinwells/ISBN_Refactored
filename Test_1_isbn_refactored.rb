@@ -18,7 +18,7 @@ class Testvalidisbn < Minitest::Test
 		assert_equal(true,check_x(refreshed))
 	end
 	def test_to_verify_validity_first_false_number
-		refreshed=["0","-","6","6","5","8","6","*","7","x","8","4"]
+		refreshed=["0","-","6","6","5","8","6","*","7","x"]
 		assert_equal(true,check_the_sum(refreshed))
 	end
 
