@@ -1,14 +1,9 @@
 def remove_unwanted(isbn_string)
-# Step 1: This will create a new array, named 'refreshed', without any char that's not an integer or an 'x':
+# Step 1: This will create a new array, named 'refreshed', to manipulate throughout the program:
 ## Step 2: then it will call function "check_count", ensuring there are only 10 characters present:
 	clay = isbn_string.split("")
 	refreshed=[]
 
-	# clay.each do |filter|
-	# 	if  filter == "0" || filter == "1" || filter == "2" || filter == "3" || filter == "4" || filter == "5" || filter == "6" || filter == "7" || filter == "8" || filter == "9" || filter =="X" || filter =="x"
-	# 		refreshed.push(filter)
-	# 	end
-	# end
 	check_count(refreshed)
 end
 
