@@ -50,7 +50,7 @@ puts semifinal
 # Now, verify that the calculated check-number is valid:
 
 	if  user_given_check_number==semifinal
-		# return true
+		true
 		valid_number(refreshed)
 	elsif user_given_check_number=="x" && semifinal==10
 		return true
