@@ -36,6 +36,15 @@ def check_x(refreshed)
 	check_count(refreshed)
 end
 
+def invalid_number (refreshed)
+		puts "\nSorry 'bout your luck!\nYou got hold of a counterfeit ISBN!\nBetter luck next time...\n\n"
+end
+
+def valid_number (refreshed)
+		puts "\nCongratulations!\nYour ISBN #{refreshed.join("")} is Valid!\nHave a nice day:-)\n"
+end
+
+
 def check_the_sum(refreshed)
 # First, identify the user-given check-number:
 user_given_check_number=refreshed[9]
@@ -56,17 +65,17 @@ semifinal=sum%11
 
 refreshed[9]=refreshed[9].to_i
 	if  refreshed[9]==semifinal
-		puts "\nCongratulations!\nYour ISBN #{refreshed.join("")} is Valid!\nHave a nice day:-)\n"
-		true
+		return true
+		valid_number(refreshed)
 	elsif user_given_check_number=="x" && semifinal==10
-		puts "\nCongratulations!\nYour ISBN #{refreshed[0..8].join("")}x is Valid!\nHave a nice day:-)\n"
-		true
+		return true
+		valid_number(refreshed)
 	 elsif user_given_check_number=="X" && semifinal==10
-		puts "\nCongratulations!\nYour ISBN #{refreshed[0..8].join("")}X is Valid!\nHave a nice day:-)\n"
-		true
+		return true
+		valid_number(refreshed)
 	else
-		puts "\nSorry 'bout your luck!\nYou got hold of a counterfeit ISBN!\nBetter luck next time...\n\n"
-		false
+		return false
+		invalid_number(refreshed)
 	end
 end
 
@@ -79,7 +88,7 @@ end
 
 
 
-# remove_unwanted("0-66586*7x84") #INVALID
+remove_unwanted("0-66586*7x84") #INVALID
 # remove_unwanted("7421394761") #VALID
 # remove_unwanted("7421394765") #INVALID
 # print remove_unwanted("7195869X") #VALID
