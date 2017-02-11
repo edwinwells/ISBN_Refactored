@@ -52,21 +52,23 @@ puts semifinal
 	if  user_given_check_number==semifinal
 		true
 		valid_number(refreshed)
+
 	elsif user_given_check_number=="x" && semifinal==10
-		return true
+		true
 		valid_number(refreshed)
+
 	 elsif user_given_check_number=="X" && semifinal==10
-		return true
+		true
 		valid_number(refreshed)
+
 	else
-		return false
+		false
 		invalid_number(refreshed)
 	end
 end
 
 
 def invalid_number(refreshed)
-		puts "I'm in valid_number!!!"
 		puts "\nSorry 'bout your luck!\nYou got hold of a counterfeit ISBN!\nBetter luck next time...\n\n"
 end
 
@@ -89,5 +91,5 @@ end
 
 # remove_unwanted("0-66586*7x84") #INVALID
 # remove_unwanted("7421394761") #VALID
-# remove_unwanted("7421394765") #INVALID
-remove_unwanted("0471958697") #VALID
+remove_unwanted("7421394765") #INVALID
+# remove_unwanted("0471958697") #VALID
