@@ -1,7 +1,6 @@
 def remove_unwanted(isbn_string)
 # Step 1: This will create a new array, named 'refreshed', without any char that's not an integer or an 'x':
 ## Step 2: then it will call function "check_count", ensuring there are only 10 characters present:
-
 	clay = isbn_string.split("")
 	refreshed=[]
 
