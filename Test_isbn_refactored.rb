@@ -3,20 +3,20 @@ require_relative "isbn_refactored.rb"
 
 class Testvalidisbn < Minitest::Test
 
-	def test_nothing_present_except_integers_true
-		isbn_string="0123456789"
-		assert_equal(true,remove_unwanted(isbn_string))
-	end
+	# def test_nothing_present_except_integers_true
+	# 	isbn_string="0123456h789"
+	# 	assert_equal(true,remove_unwanted(isbn_string))
+	# end
 
-	def test_nothing_present_except_integers_false
-		isbn_string="012B3"
-		assert_equal(false,remove_unwanted(isbn_string))
-	end
+	# def test_nothing_present_except_integers_false
+	# 	isbn_string="012B3"
+	# 	assert_equal(false,remove_unwanted(isbn_string))
+	# end
 
-	def test_nothing_present_except_integers_or_x_true
-		isbn_string="012X37898x"
-		assert_equal(true,remove_unwanted(isbn_string))
-	end
+	# def test_nothing_present_except_integers_or_x_true
+	# 	isbn_string="012X37898x"
+	# 	assert_equal(true,remove_unwanted(isbn_string))
+	# end
 
 
 	def test_that_10_digits_only_are_present
@@ -48,6 +48,7 @@ class Testvalidisbn < Minitest::Test
 		assert_equal(true,check_the_sum(refreshed))
 	end
 
+
 	def test_if_check_count_returns_true_when_there_are_10_letters
 		letters=["x","s","d","e","f","d","k","u","p","r"]
 		assert_equal(true,check_count(letters))
@@ -71,5 +72,10 @@ class Testvalidisbn < Minitest::Test
 	def test_if_check_x_returns_false_if_not_ten_digits_present
 		letters=["a","s"]
 		assert_equal(false,check_x(letters))
+	end	
+
+	def test_to_verify_invalidity_false_number
+		refreshed=["7","4","d","1","3","e","4","7","6","1"]
+		assert_equal(false,check_the_sum(refreshed))
 	end	
 end
