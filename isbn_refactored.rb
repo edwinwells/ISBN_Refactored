@@ -1,23 +1,17 @@
 def remove_unwanted(isbn_string)
-# Step 1: This will create a new array, named 'refreshed', to manipulate throughout the program:
+# Step 1: This will create a new array, named 'refreshed', to be manipulated throughout the program:
 ## Step 2: then it will call function "check_count", ensuring there are only 10 characters present:
-	clay = isbn_string.split("")
-	refreshed=[]
+	
+	refreshed=isbn_string.split("")
 
 	check_count(refreshed)
 end
 
 def check_count(refreshed)
-	if refreshed.length<10
-		puts "\nIt's less than 10 digits!\n"
-		false
-	elsif refreshed.length>10
-		puts "\nIt's more than 10 digits!\n"
-		false
-	elsif refreshed.length==10
-		puts "\nIt's 10 digits!\n"
-		true
-		# check_x(refreshed)
+	if refreshed.length==10
+		check_x(refreshed)
+	else
+		check_the_sum_other_than_ten_chars(refreshed)
 	end
 end
 
@@ -28,15 +22,8 @@ def check_x(refreshed)
 			return false
 		end
 	end
-	check_count(refreshed)
-end
-
-def invalid_number (refreshed)
-		puts "\nSorry 'bout your luck!\nYou got hold of a counterfeit ISBN!\nBetter luck next time...\n\n"
-end
-
-def valid_number (refreshed)
-		puts "\nCongratulations!\nYour ISBN #{refreshed.join("")} is Valid!\nHave a nice day:-)\n"
+	return true
+	check_the_sum(refreshed)
 end
 
 
@@ -74,6 +61,19 @@ refreshed[9]=refreshed[9].to_i
 	end
 end
 
+
+def invalid_number(refreshed)
+		puts "\nSorry 'bout your luck!\nYou got hold of a counterfeit ISBN!\nBetter luck next time...\n\n"
+end
+
+def valid_number(refreshed)
+		puts "\nCongratulations!\nYour ISBN #{refreshed.join("")} is Valid!\nHave a nice day:-)\n\n"
+end
+
+def check_the_sum_other_than_ten_chars(refreshed)
+
+end
+
 def function_carpool
 
 end
@@ -83,7 +83,7 @@ end
 
 
 
-remove_unwanted("0-66586*7x84") #INVALID
+# remove_unwanted("0-66586*7x84") #INVALID
 # remove_unwanted("7421394761") #VALID
 # remove_unwanted("7421394765") #INVALID
-# print remove_unwanted("7195869X") #VALID
+remove_unwanted("0471958697") #VALID

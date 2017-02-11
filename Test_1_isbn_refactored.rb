@@ -3,7 +3,7 @@ require_relative "isbn_refactored.rb"
 
 class Testvalidisbn < Minitest::Test
 
-	def test_that_10_digits_only_are_present
+	def test_that_if_10_digits_only_are_present_
 		refreshed=["1", "1", "1","1","1","1","1","1","1","1"]
 		assert_equal(true, check_count(refreshed))
 	end
@@ -13,7 +13,7 @@ class Testvalidisbn < Minitest::Test
 		assert_equal(false,check_x(refreshed))
 	end
 
-	def test_again_that_if_x_present_it_is_only_allowed_at_index_10
+	def test_again_that_if_x_present_it_is_only_allowed_at_index_9
 		refreshed=["0","1","2","3","4","5","6","7","8","X"]
 		assert_equal(true,check_x(refreshed))
 	end
@@ -33,15 +33,15 @@ class Testvalidisbn < Minitest::Test
 	end
 
 
-	def test_if_check_count_returns_true_when_there_are_10_letters
-		letters=["x","s","d","e","f","d","k","u","p","r"]
-		assert_equal(true,check_count(letters))
-	end
+	# def test_if_check_count_returns_true_when_there_are_10_letters
+	# 	letters=["x","s","d","e","f","d","k","u","p","r"]
+	# 	assert_equal(true,check_count(letters))
+	# end
 
-	def test_if_check_count_returns_false_if_there_are_not_10_letters
-		letters=["x","s"]
-		assert_equal(false,check_count(letters))
-	end
+	# def test_if_check_count_returns_false_if_there_are_not_10_letters
+	# 	letters=["x","s"]
+	# 	assert_equal(false,check_count(letters))
+	# end
 
 	def test_if_check_x_returns_false_if_x_not_at_index_9
 		letters=["x","s","d","e","f","d","k","u","p","r"]
@@ -54,7 +54,7 @@ class Testvalidisbn < Minitest::Test
 	end
 
 	def test_if_check_x_returns_false_if_not_ten_digits_present
-		letters=["a","s"]
+		letters=["x","s"]
 		assert_equal(false,check_x(letters))
 	end	
 
