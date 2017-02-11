@@ -3,22 +3,6 @@ require_relative "isbn_refactored.rb"
 
 class Testvalidisbn < Minitest::Test
 
-	# def test_nothing_present_except_integers_true
-	# 	isbn_string="0123456h789"
-	# 	assert_equal(true,remove_unwanted(isbn_string))
-	# end
-
-	# def test_nothing_present_except_integers_false
-	# 	isbn_string="012B3"
-	# 	assert_equal(false,remove_unwanted(isbn_string))
-	# end
-
-	# def test_nothing_present_except_integers_or_x_true
-	# 	isbn_string="012X37898x"
-	# 	assert_equal(true,remove_unwanted(isbn_string))
-	# end
-
-
 	def test_that_10_digits_only_are_present
 		refreshed=["1", "1", "1","1","1","1","1","1","1","1"]
 		assert_equal(true, check_count(refreshed))
