@@ -20,17 +20,14 @@ end
 def check_count(refreshed)
 
 	if refreshed.length<10
-		puts "\nIt's less than 10 digits!\n"
+		invalid_isbn(refreshed)
 		false
-
 	elsif refreshed.length>10
-		puts "\nIt's more than 10 digits!\n"
+		check_the_sum_greater_than_ten(refreshed)
 		false
-
 	elsif refreshed.length==10
-		puts "\nIt's 10 digits!\n"
 		true
-		# check_x(refreshed)
+		check_x(refreshed)
 	end
 end
 
@@ -39,12 +36,11 @@ def check_x(refreshed)
 
 	for i in 0..8 do
 		if refreshed[i] == "x" || refreshed[i] == "X"
-			puts "Invalid ISBN !!!"
-			return false
+			invalid_isbn(refreshed)	
 		end
 	end
 
-	check_count(refreshed)
+	check_the_sum(refreshed)
 end
 
 
@@ -68,22 +64,26 @@ user_given_check_number=refreshed[9]
 semifinal=sum%11
 
 # Now, verify that the calculated check-number is valid:
-refreshed[9]=refreshed[9].to_i
+refreshed[9]=refreshed[9]
 
 	if  refreshed[9]==semifinal
-		puts "\nCongratulations!\nYour ISBN #{refreshed.join("")} is Valid!\nHave a nice day:-)\n"
-		true
+			valid_isbn(refreshed)
 	elsif user_given_check_number=="x" && semifinal==10
-		puts "\nCongratulations!\nYour ISBN #{refreshed[0..8].join("")}x is Valid!\nHave a nice day:-)\n"
-		true
-	 elsif user_given_check_number=="X" && semifinal==10
-		puts "\nCongratulations!\nYour ISBN #{refreshed[0..8].join("")}X is Valid!\nHave a nice day:-)\n"
+			valid_isbn(refreshed)
+	elsif user_given_check_number=="X" && semifinal==10
+			valid_isbn(refreshed)
 	else
-		puts "\nSorry 'bout your luck!\nYou got hold of a counterfeit ISBN!\nBetter luck next time...\n\n"
-		false
+			invalid_isbn(refreshed)
 	end
 end
 
+def valid_isbn(refreshed)
+		puts "\nCongratulations!\nYour ISBN #{refreshed[0..8].join("")}X is Valid!\nHave a nice day:-)\n"
+end
+
+def invalid_isbn(refreshed)
+		puts "\nSorry 'bout your luck!\nYou got hold of a counterfeit ISBN!\nBetter luck next time...\n\n"
+end
 
 # remove_unwanted("0-66586*7x84") #INVALID
 # remove_unwanted("7421394761") #VALID
