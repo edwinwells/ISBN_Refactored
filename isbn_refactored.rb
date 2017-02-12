@@ -1,6 +1,6 @@
 def remove_unwanted(isbn_string)
 # Step 1: This will create a new array, named 'refreshed', without any char that's not an integer or an 'x':
-## Step 2: then it will call function "check_count", ensuring there are only 10 characters present:
+## Step 2: then it will call function "check_count", determining if there are present: a)less than (automatically invalid); b) equal to (further examination by check_x(refreshed) required); or c) greater than 10 characters (further examination by check_the_sum_greater_than_ten(refreshed) required): 
 
 	clay = isbn_string.split("")
 	refreshed=[]
@@ -21,12 +21,9 @@ def check_count(refreshed)
 
 	if refreshed.length<10
 		invalid_isbn(refreshed)
-		false
 	elsif refreshed.length>10
 		check_the_sum_greater_than_ten(refreshed)
-		false
 	elsif refreshed.length==10
-		true
 		check_x(refreshed)
 	end
 end
@@ -66,7 +63,7 @@ semifinal=sum%11
 # Now, verify that the calculated check-number is valid:
 refreshed[9]=refreshed[9]
 
-	if  refreshed[9]==semifinal
+	if  refreshed[9].to_i==semifinal
 			valid_isbn(refreshed)
 	elsif user_given_check_number=="x" && semifinal==10
 			valid_isbn(refreshed)
@@ -77,15 +74,22 @@ refreshed[9]=refreshed[9]
 	end
 end
 
+
+def	check_the_sum_greater_than_ten(refreshed)
+end
+
+
 def valid_isbn(refreshed)
-		puts "\nCongratulations!\nYour ISBN #{refreshed[0..8].join("")}X is Valid!\nHave a nice day:-)\n"
+		puts "\nCongratulations!\nYour ISBN #{refreshed[0..9].join("")} is Valid!\nHave a nice day:-)\n"
+		true
 end
 
 def invalid_isbn(refreshed)
 		puts "\nSorry 'bout your luck!\nYou got hold of a counterfeit ISBN!\nBetter luck next time...\n\n"
+		false
 end
 
 # remove_unwanted("0-66586*7x84") #INVALID
 # remove_unwanted("7421394761") #VALID
 # remove_unwanted("7421394765") #INVALID
-# print remove_unwanted("7195869X") #VALID
+# remove_unwanted("877195869x") #VALID
