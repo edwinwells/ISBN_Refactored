@@ -13,13 +13,22 @@ class Testvalidisbn < Minitest::Test
 		assert_equal(true,remove_unwanted(isbn_string))
 	end
 
+	def test_invalid_10_digit_ISBN_returns_false
+		isbn_string="7483394769"
+		assert_equal(false,remove_unwanted(isbn_string))
+	end
+	
 	def test_valid_10_digit_ISBN_with_x_at_index_10_returns_true
 		isbn_string="877195869x"
 		assert_equal(true,remove_unwanted(isbn_string))
 	end
 
+	def test_invalid_10_digit_ISBN_with_x_not_at_index_10_returns_false
+		isbn_string="8771x5869x"
+		assert_equal(false,remove_unwanted(isbn_string))
+	end
 
-	# def test_that_10_digits_only_are_present
+		# def test_that_10_digits_only_are_present
 	# 	refreshed=["1", "1", "1","1","1","1","1","1","1","1"]
 	# 	assert_equal(true, check_count(refreshed))
 	# end

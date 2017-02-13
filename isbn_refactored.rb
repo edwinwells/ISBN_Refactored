@@ -1,18 +1,16 @@
 def remove_unwanted(isbn_string)
 # Step 1: This will create a new array, named 'refreshed', without any char that's not an integer or an 'x':
 ## Step 2: then it will call function "check_count", determining if there are present: a)less than (automatically invalid); b) equal to (further examination by check_x(refreshed) required); or c) greater than 10 characters (further examination by check_the_sum_greater_than_ten(refreshed) required): 
-
+	isbn_string.upcase!
 	clay = isbn_string.split("")
 	refreshed=[]
 
 	clay.each do |filter|
 
 		if  filter == "0" || filter == "1" || filter == "2" || filter == "3" || filter == "4" || filter == "5" || filter == "6" || filter == "7" || filter == "8" || filter == "9" || filter =="X" || filter =="x"
-
 			refreshed.push(filter)
 		end
 	end
-
 	check_count(refreshed)
 end
 
@@ -31,13 +29,20 @@ end
 
 def check_x(refreshed)
 
-	for i in 0..8 do
-		if refreshed[i] == "x" || refreshed[i] == "X"
-			invalid_isbn(refreshed)	
-		end
+    if refreshed.include?("X") && (refreshed.index("X") == refreshed[9])
+    	invalid_isbn(refreshed)
+    else
+		check_the_sum(refreshed)
 	end
+    # refreshed.include?("X") ? (refreshed.index("X") == refreshed.length - 1) : invalid_isbn(refreshed)
 
-	check_the_sum(refreshed)
+
+	# for i in 0..8 do
+	# 	if refreshed[i] == "x" || refreshed[i] == "X"
+	# 		invalid_isbn(refreshed)	
+	# 	end
+	# end
+
 end
 
 
@@ -82,6 +87,7 @@ end
 def valid_isbn(refreshed)
 		puts "\nCongratulations!\nYour ISBN #{refreshed[0..9].join("")} is Valid!\nHave a nice day:-)\n"
 		true
+
 end
 
 def invalid_isbn(refreshed)
