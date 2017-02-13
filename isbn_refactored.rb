@@ -20,6 +20,7 @@ def check_count(refreshed)
 	if refreshed.length<10
 		invalid_isbn(refreshed)
 	elsif refreshed.length>10
+		refreshed=refreshed.join("")
 		check_the_sum_greater_than_ten(refreshed)
 	elsif refreshed.length==10
 		check_x(refreshed)
@@ -81,6 +82,17 @@ end
 
 
 def	check_the_sum_greater_than_ten(refreshed)
+	sum = 0; index = 0; refreshed = refreshed.chop; alternating_multiplier = [1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3]
+
+	refreshed.each_char {|number| sum += (number.to_i * alternating_multiplier[index]); index += 1}
+
+	final=((10 - (sum % 10)) % 10).to_s
+	puts final
+	puts sum
+	puts refreshed
+
+	# if refreshed.length == 13 then return check_the_sum_greater_than_ten(refreshed) == refreshed[-1] end
+
 end
 
 
@@ -95,7 +107,10 @@ def invalid_isbn(refreshed)
 		false
 end
 
-# remove_unwanted("0-66586*7x84") #INVALID
+# 10-digit runs:
 # remove_unwanted("7421394761") #VALID
 # remove_unwanted("7421394765") #INVALID
 # remove_unwanted("877195869x") #VALID
+
+# 13-digit runs:
+remove_unwanted("9780470059029") #INVALID
