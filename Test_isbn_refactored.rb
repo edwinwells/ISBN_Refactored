@@ -17,7 +17,7 @@ class Testvalidisbn < Minitest::Test
 		isbn_string="7483394769"
 		assert_equal(false,remove_unwanted(isbn_string))
 	end
-	
+
 	def test_valid_10_digit_ISBN_with_x_at_index_10_returns_true
 		isbn_string="877195869x"
 		assert_equal(true,remove_unwanted(isbn_string))
@@ -28,63 +28,43 @@ class Testvalidisbn < Minitest::Test
 		assert_equal(false,remove_unwanted(isbn_string))
 	end
 
-		# def test_that_10_digits_only_are_present
-	# 	refreshed=["1", "1", "1","1","1","1","1","1","1","1"]
-	# 	assert_equal(true, check_count(refreshed))
-	# end
+	def test_valid_13_digit_ISBN_returns_true
+		isbn_string="9780470059029"
+		assert_equal(true,remove_unwanted(isbn_string))
+	end
+ 
+ 	def test_valid_13_digit_ISBN_with_dashes_returns_true
+		isbn_string="978-0-13-149505-0"
+		assert_equal(true,remove_unwanted(isbn_string))
+	end
 
-	# def test_that_if_x_present_it_is_only_allowed_at_index_10
-	# 	refreshed=["0","1","2","3","4","5","6","X","8","7"]
-	# 	assert_equal(false,check_x(refreshed))
-	# end
+ 	def test_valid_13_digit_ISBN_with_spaces_returns_true
+		isbn_string="978 0 471 48648 0"
+		assert_equal(true,remove_unwanted(isbn_string))
+	end
 
-	# def test_again_that_if_x_present_it_is_only_allowed_at_index_10
-	# 	refreshed=["0","1","2","3","4","5","6","7","8","X"]
-	# 	assert_equal(true,check_x(refreshed))
-	# end
-	# def test_to_verify_validity_first_false_number
-	# 	refreshed=["0","-","6","6","5","8","6","*","7","x","8","4"]
-	# 	assert_equal(true,check_the_sum(refreshed))
-	# end
+ 	def test_invalid_13_digit_ISBN_returns_false
+		isbn_string="4780470059029"
+		assert_equal(false,remove_unwanted(isbn_string))
+	end
 
-	# def test_to_verify_validity_second_false_number
-	# 	refreshed=["7","4","2","1","3","9","4","7","6","5"]
-	# 	assert_equal(false,check_the_sum(refreshed))
-	# end
+ 	def test_invalid_10_digit_ISBN_letters_only_returns_false
+		isbn_string="efgikslijk"
+		assert_equal(false,remove_unwanted(isbn_string))
+	end
 
-	# def test_to_verify_validity_true_number
-	# 	refreshed=["7","4","2","1","3","9","4","7","6","1"]
-	# 	assert_equal(true,check_the_sum(refreshed))
-	# end
+ 	def test_invalid_13_digit_ISBN_letters_only_returns_false
+		isbn_string="efgkorikslijk"
+		assert_equal(false,remove_unwanted(isbn_string))
+	end
 
+ 	def test_invalid_10_digit_ISBN_letters_and_numbers_returns_false
+		isbn_string="efk3ri5sl9"
+		assert_equal(false,remove_unwanted(isbn_string))
+	end
 
-	# def test_if_check_count_returns_true_when_there_are_10_letters
-	# 	letters=["x","s","d","e","f","d","k","u","p","r"]
-	# 	assert_equal(true,check_count(letters))
-	# end
-
-	# def test_if_check_count_returns_false_if_there_are_not_10_letters
-	# 	letters=["x","s"]
-	# 	assert_equal(false,check_count(letters))
-	# end
-
-	# def test_if_check_x_returns_false_if_x_not_at_index_9
-	# 	letters=["x","s","d","e","f","d","k","u","p","r"]
-	# 	assert_equal(false,check_x(letters))
-	# end
-
-	# def test_if_check_x_returns_true_if_x_at_index_9
-	# 	letters=["a","s","d","e","f","d","k","u","p","x"]
-	# 	assert_equal(true,check_x(letters))
-	# end
-
-	# def test_if_check_x_returns_false_if_not_ten_digits_present
-	# 	letters=["a","s"]
-	# 	assert_equal(false,check_x(letters))
-	# end	
-
-	# def test_to_verify_invalidity_false_number
-	# 	refreshed=["7","4","d","1","3","e","4","7","6","1"]
-	# 	assert_equal(false,check_the_sum(refreshed))
-	# end	
+ 	def test_invalid_13_digit_ISBN_letters_and_numbers_returns_false
+		isbn_string="efk3r72i5sl9x"
+		assert_equal(false,remove_unwanted(isbn_string))
+	end	
 end

@@ -36,7 +36,7 @@ def check_x(refreshed)
 end
 
 
-def check_the_sum(refreshed)
+def check_the_sum(refreshed)#check_the_sum(refreshed) is called for 10-digit ONLY!!
 # First, identify the user-given check-number:
 
 user_given_check_number=refreshed[9]
@@ -101,11 +101,3 @@ def invalid_isbn(refreshed)
 		puts "\nSorry 'bout your luck!\nYou got hold of a counterfeit ISBN!\nBetter luck next time...\n\n"
 		false
 end
-
-# 10-digit runs:
-# remove_unwanted("7421394761") #VALID
-# remove_unwanted("7421394765") #INVALID
-# remove_unwanted("877195869x") #VALID
-
-# 13-digit runs:
-remove_unwanted("9780470059029") #VALID
