@@ -16,7 +16,6 @@ end
 
 
 def check_count(refreshed)
-
 	if refreshed.length<10
 		invalid_isbn(refreshed)
 	elsif refreshed.length>10
@@ -29,21 +28,11 @@ end
 
 
 def check_x(refreshed)
-
     if refreshed.include?("X") && (refreshed.index("X") == refreshed[9])
     	invalid_isbn(refreshed)
     else
 		check_the_sum(refreshed)
 	end
-    # refreshed.include?("X") ? (refreshed.index("X") == refreshed.length - 1) : invalid_isbn(refreshed)
-
-
-	# for i in 0..8 do
-	# 	if refreshed[i] == "x" || refreshed[i] == "X"
-	# 		invalid_isbn(refreshed)	
-	# 	end
-	# end
-
 end
 
 
@@ -70,11 +59,11 @@ semifinal=sum%11
 refreshed[9]=refreshed[9]
 
 	if  refreshed[9].to_i==semifinal
-			valid_isbn(refreshed)
+			valid_isbn_ten(refreshed)
 	elsif user_given_check_number=="x" && semifinal==10
-			valid_isbn(refreshed)
+			valid_isbn_ten(refreshed)
 	elsif user_given_check_number=="X" && semifinal==10
-			valid_isbn(refreshed)
+			valid_isbn_ten(refreshed)
 	else
 			invalid_isbn(refreshed)
 	end
@@ -82,22 +71,28 @@ end
 
 
 def	check_the_sum_greater_than_ten(refreshed)
+	original=refreshed
 	sum = 0; index = 0; refreshed = refreshed.chop; alternating_multiplier = [1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3]
 
 	refreshed.each_char {|number| sum += (number.to_i * alternating_multiplier[index]); index += 1}
 
 	final=((10 - (sum % 10)) % 10).to_s
-	puts final
-	puts sum
-	puts refreshed
 
-	# if refreshed.length == 13 then return check_the_sum_greater_than_ten(refreshed) == refreshed[-1] end
+	if refreshed+final==original
+		valid_isbn_thirteen(original)
+	else
+		invalid_isbn(refreshed)
+	end
 
 end
 
+def valid_isbn_ten(refreshed)		
+		puts "\nCongratulations!\nYour ISBN #{refreshed.join("")} is Valid!\nHave a nice day:-)\n\n"
+		true
+end
 
-def valid_isbn(refreshed)
-		puts "\nCongratulations!\nYour ISBN #{refreshed[0..9].join("")} is Valid!\nHave a nice day:-)\n"
+def valid_isbn_thirteen(original)
+		puts "\nCongratulations!\nYour ISBN #{original} is Valid!\nHave a nice day:-)\n\n"
 		true
 
 end
@@ -113,4 +108,4 @@ end
 # remove_unwanted("877195869x") #VALID
 
 # 13-digit runs:
-remove_unwanted("9780470059029") #INVALID
+remove_unwanted("9780470059029") #VALID
