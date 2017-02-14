@@ -6,11 +6,11 @@ get '/' do
 end
 
 post '/remove_unwanted(isbn_string)' do
+
 result = remove_unwanted(params[:isbn_string])
-    "#{result}"
 
 	if result==true 
-		"\nCongratulations!\nYour ISBN " +%{isbn_string}+ " is Valid!\nHave a nice day:-)\n\n"
+		"\nCongratulations!\nYour ISBN is Valid!\nHave a nice day:-)\n\n"
 	else
 		"\nSorry 'bout your luck!\nYou got hold of a counterfeit ISBN!\nBetter luck next time...\n\n"
 	end
