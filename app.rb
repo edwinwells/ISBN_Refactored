@@ -5,7 +5,7 @@ get '/' do
     erb :User_Input_ISBN_Number
 end
 
-post '/remove_unwanted(isbn_string)' do
-# result = remove_unwanted(isbn_num)
-# 	'#{result}'
+post '/remove_unwanted(isbn_string) ' do
+result = remove_unwanted(params[:isbn_string])
+    '#{result}'
 end
