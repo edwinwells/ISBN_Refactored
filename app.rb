@@ -10,11 +10,13 @@ post '/remove_unwanted(isbn_string)' do
 	result = remove_unwanted(number)
 
 	if result==true 
-		"\nCongratulations!\nYour ISBN #{number} is Valid!\nHave a nice day:-)\n\n"
+		statement="\nCongratulations!\nYour ISBN #{number} is Valid!\nHave a nice day:-)\n\n"
 	else
-		"\nSorry 'bout your luck!\nYou got hold of a counterfeit ISBN!\nBetter luck next time...\n\n"
+		statement="\nSorry 'bout your luck!\nYou got hold of a counterfeit ISBN!\nBetter luck next time...\n\n"
 	end
 
 
-
+	erb :showinfo, :locals => {:number => number, 
+		                       :result => result, 
+		                       :statement => statement}
 end
