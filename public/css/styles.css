@@ -3,7 +3,14 @@ color: blue;
 
 }
 
+.color_darkmagenta{
+color: darkmagenta;
+
+}
+
+
 .center{
+border-bottom: 5px double white;
 text-align: center;
 
 }
@@ -11,6 +18,4 @@ text-align: center;
 .bgchoc{
 background-color: "chocolate";
 
-
 }
-
