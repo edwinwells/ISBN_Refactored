@@ -21,3 +21,4 @@ post '/remove_unwanted' do
 		                       :result => session[:result], 
 		                       :statement => statement}
 end
+#tests
